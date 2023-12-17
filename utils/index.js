@@ -76,9 +76,21 @@ var database =
   ]
 function ScannerInit() {
 
+  function findSeatNumberByName(database, nameToSearch) {
+    for (let key in database) {
+      console.log("yes",key)
+      if (database.hasOwnProperty(key) && key === nameToSearch) {
+        console.log("yes",key)
+        return database[key];
+      }
+    }
+    return null; // Return null if the name is not found
+  }
   function onScanSuccess(decodedText, decodedResult) {
+    let seatNumber = findSeatNumberByName(database, decodedText)
     // handle the scanned code as you like, for example:
-    console.log(`Code matched = ${decodedText}`, decodedResult);
+   alert(`Code matched = ${decodedText},\n seat Number is: ${seatNumber}`, decodedResult);
+    console.log(`Code matched = ${decodedText},\n seat Number is: ${seatNumber}`, decodedResult);
   }
 
   function onScanFailure(error) {
@@ -129,5 +141,5 @@ function EngineInit() {
 
 }
 
-EngineInit()
+// EngineInit()
 ScannerInit()
