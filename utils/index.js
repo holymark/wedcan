@@ -72,24 +72,26 @@ var database =
     { "name": "YETUNDE BADAMOSI", "seatNumber": 14 },
     { "name": "Mrs DEBORAH AYINLA", "seatNumber": 13 },
     { "name": "DAMILOLA INAWOLE", "seatNumber": 18 },
-    { "name": "TOSIN MICHEAL", "seatNumber": 9 }
+    { "name": "TOSIN MICHEAL", "seatNumber": 9 },
+    { "name": "'Twas brillig", "seatNumber": 119 }
   ]
 function ScannerInit() {
 
   function findSeatNumberByName(database, nameToSearch) {
-    for (let key in database) {
-      console.log("yes",key)
-      if (database.hasOwnProperty(key) && key === nameToSearch) {
-        console.log("yes",key)
-        return database[key];
+    let object;
+    for (let i = 0; i < database.length; ++i) {
+      object = database[i]
+
+      for (const key in object) {
+        if (object.hasOwnProperty(key) && object[key] === nameToSearch)
+          return object.seatNumber
       }
     }
-    return null; // Return null if the name is not found
   }
   function onScanSuccess(decodedText, decodedResult) {
     let seatNumber = findSeatNumberByName(database, decodedText)
     // handle the scanned code as you like, for example:
-   alert(`Code matched = ${decodedText},\n seat Number is: ${seatNumber}`, decodedResult);
+    alert(`Code matched = ${decodedText},\n seat Number is: ${seatNumber}`, decodedResult);
     console.log(`Code matched = ${decodedText},\n seat Number is: ${seatNumber}`, decodedResult);
   }
 
