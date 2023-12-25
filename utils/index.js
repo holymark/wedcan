@@ -91,7 +91,22 @@ function ScannerInit() {
   function onScanSuccess(decodedText, decodedResult) {
     let seatNumber = findSeatNumberByName(database, decodedText)
     // handle the scanned code as you like, for example:
-    alert(`Code matched = ${decodedText},\n seat Number is: ${seatNumber}`, decodedResult);
+    Swal.fire({
+      title: "AUTHORIZED",
+      html: `<p>Name: ${decodedText}<br/>Seat Number: ${seatNumber}</p>
+      <button>Check In?</button>`,
+      icon: "success",
+      confirmButtonText: "Save",
+
+    })
+    .then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
     console.log(`Code matched = ${decodedText},\n seat Number is: ${seatNumber}`, decodedResult);
   }
 
