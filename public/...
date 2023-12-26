@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket and API Interaction</title>
+</head>
+<body>
+
+  <h1>WebSocket and API Interaction</h1>
+
+  <form id="postDataForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br>
+    <label for="seatNumber">Seat Number:</label>
+    <input type="text" id="seatNumber" name="seatNumber" required>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <hr>
+
+  <h2>Received Data:</h2>
+  <ul id="receivedDataList"></ul>
+
+  <script>
+    const form = document.getElementById('postDataForm');
+    const receivedDataList = document.getElementById('receivedDataList');
+
+    // WebSocket connection
+    const socket = new WebSocket('ws://localhost:3000');
+
+    socket.addEventListener('open', (event) => {
+      console.log('WebSocket connection opened');
+    });
+
+    socket.addEventListener('message', (event) => {
+      const newData = JSON.parse(event.data);
+      console.log('Received data:', newData);
+
+      // Display received data in the list
+      const listItem = document.createElement('li');
+      listItem.textContent = `Name: ${newData.name}, Seat Number: ${newData.seatNumber}`;
+      receivedDataList.appendChild(listItem);
+    });
+
+    socket.addEventListener('close', (event) => {
+      console.log('WebSocket connection closed');
+    });
+
+    // Form submission
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch('http://localhost:3000/data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Data added successfully:', data);
+
+        // Clear the form after successful submission
+        form.reset();
+      })
+      .catch(error => console.error('Error adding data:', error));
+    });
+  </script>
+
+</body>
+</html>
