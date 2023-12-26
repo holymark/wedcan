@@ -1,9 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const WebSocket = require('ws');
+require("dotenv").config()
+const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT||3000;
+app.use(cors())
+const port = process.env.PORT || 3000;
 
 const mongoURI = process.env.MONGO__URL;
 const mongooseOptions = {
@@ -14,12 +17,14 @@ const mongooseOptions = {
 const dataSchema = new mongoose.Schema({
   name: { type: String, required: true },
   seatNumber: { type: String, required: true },
-});
+  scanned: { type: Boolean, default: false }
+},{timestamps:true});
 
 const Data = mongoose.model('Data', dataSchema);
 
 app.use(express.json());
 
+console.log(mongoURI)
 mongoose.connect(mongoURI, mongooseOptions);
 
 const server = app.listen(port, () => {
@@ -42,7 +47,7 @@ wss.on('connection', (ws) => {
   });
 });
 
-app.get('/data', async (req, res) => {
+app.get('/api/data', async (req, res) => {
   try {
     const responseData = await Data.find();
     res.json(responseData);
@@ -51,7 +56,7 @@ app.get('/data', async (req, res) => {
   }
 });
 
-app.post('/data', async (req, res) => {
+app.post('/api/data', async (req, res) => {
   const postData = req.body;
 
   if (!postData.name || !postData.seatNumber) {
@@ -77,25 +82,26 @@ app.post('/data', async (req, res) => {
 });
 
 
-app.delete('/data/:id', async (req, res) => {
-    const itemId = req.params.id;
-  
-    try {
-      const deletedItem = await Data.findByIdAndRemove(itemId);
-  
-      if (!deletedItem) {
-        res.status(404).json({ error: 'Item not found' });
-        return;
-      }
-  
-      wss.clients.forEach((client) => {
-        if (client.readyState === WebSocket.OPEN) {
-          client.send(JSON.stringify({ deletedItem, action: 'delete' }));
-        }
-      });
-  
-      res.json({ message: 'Item deleted successfully' });
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
+app.delete('/api/data/:id', async (req, res) => {
+  const itemId = req.params.id;
+
+  try {
+    const deletedItem = await Data.findByIdAndDelete(itemId);
+
+    if (!deletedItem) {
+      res.status(404).json({ error: 'Item not found' });
+      return;
     }
-  });
+
+    wss.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(JSON.stringify({ deletedItem, action: 'delete' }));
+      }
+    });
+
+    res.json({ message: 'Item deleted successfully' });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
