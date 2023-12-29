@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const WebSocket = require('ws');
 require("dotenv").config()
 const cors = require('cors');
-
+const path = require("path")
 const app = express();
 app.use(cors())
+app.use(express.json())
 const port = process.env.PORT || 3000;
 
 const mongoURI = process.env.MONGO__URL;
@@ -27,6 +28,7 @@ app.use(express.json());
 console.log(mongoURI)
 mongoose.connect(mongoURI, mongooseOptions);
 
+app.use(express.static(path.join(__dirname, "./public")))
 const server = app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
