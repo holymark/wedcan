@@ -595,7 +595,7 @@ var database = [
     "name": "MR. & MRS. TOLA ELIJAH",
     "seatNumber": "1"
   },
- 
+
 ]
 function findSeatNumberByName(nameToSearch) {
   const matchingEntry = database.find(entry => Object.values(entry).includes(nameToSearch));
@@ -604,10 +604,10 @@ function findSeatNumberByName(nameToSearch) {
 
 function onScanSuccess(decodedText) {
   const seatNumber = findSeatNumberByName(decodedText);
-
+  console.log("decoded", decodedText)
   Swal.fire({
     title: "AUTHORIZED",
-    html: `<p>Name: ${decodedText}<br/>Seat Number: ${seatNumber}</p><button>Check In?</button>`,
+    html: `<p>Name: ${decodedText}<br/>Table Number: ${seatNumber}</p><button>Check In?</button>`,
     icon: "success",
     confirmButtonText: "Save",
   }).then((result) => {
@@ -645,14 +645,15 @@ html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
 
 async function saveScanned(name, seatNumber) {
-  await fetch("https://3000-holymark-wedcan-n1twsqj9jr9.ws-eu107.gitpod.io/api/data",
-    {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: { name, seatNumber, scanned: true }
-    }).then(response => response.json())
+  const raw = await fetch("/api/data", {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name, seatNumber, scanned: true })
+  })
+    .then(response => response.json())
     .then(data => {
       console.log('Data added successfully:', data);
     })
@@ -699,7 +700,7 @@ function removeScanned(button) {
   listItem.parentNode.removeChild(listItem);
 }
 
-getScanned("https://3000-holymark-wedcan-n1twsqj9jr9.ws-eu107.gitpod.io/api/data")
+getScanned("/api/data")
   .then(d => {
     var html = ``
     html += `<ol class="list-decimal">`;
