@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const WebSocket = require('ws');
 require("dotenv").config()
 const cors = require('cors');
 const path = require("path")
@@ -19,7 +18,7 @@ const dataSchema = new mongoose.Schema({
   name: { type: String, required: true },
   seatNumber: { type: String, required: true },
   scanned: { type: Boolean, default: false }
-},{timestamps:true});
+}, { timestamps: true });
 
 const Data = mongoose.model('Data', dataSchema);
 
@@ -33,21 +32,6 @@ const server = app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 
-const wss = new WebSocket.Server({ server });
-
-wss.on('connection', (ws) => {
-  console.log('WebSocket connection opened');
-
-  ws.send('WebSocket connection opened');
-
-  ws.on('message', (message) => {
-    console.log(`Received message: ${message}`);
-  });
-
-  ws.on('close', () => {
-    console.log('WebSocket connection closed');
-  });
-});
 
 app.get('/api/data', async (req, res) => {
   try {
@@ -71,11 +55,7 @@ app.post('/api/data', async (req, res) => {
 
     await newData.save();
 
-    wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(JSON.stringify(newData));
-      }
-    });
+
 
     res.json({ message: 'Data added successfully' });
   } catch (error) {
@@ -95,11 +75,7 @@ app.delete('/api/data/:id', async (req, res) => {
       return;
     }
 
-    wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(JSON.stringify({ deletedItem, action: 'delete' }));
-      }
-    });
+
 
     res.json({ message: 'Item deleted successfully' });
   } catch (error) {
