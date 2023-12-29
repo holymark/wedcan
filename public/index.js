@@ -1,81 +1,602 @@
-var database =
-  [
-    { "name": "Alice", "seatNumber": 101 },
-    { "name": "Bob", "seatNumber": 102 },
-    { "name": "Charlie", "seatNumber": 103 },
-    { "name": "Capt. PETER OLORUNMAYE (Rtd)", "seatNumber": 4 },
-    { "name": "Mrs BANKE OLORUNMAYE", "seatNumber": 19 },
-    { "name": "Pst. MOSES ENABULELE", "seatNumber": 8 },
-    { "name": "Pst ELIZABETH ENABULELE", "seatNumber": 17 },
-    { "name": "Mrs OZIGI", "seatNumber": 13 },
-    { "name": "Dr. (Mrs.) ELIZABETH ELHASSAN", "seatNumber": 13 },
-    { "name": "Mr FOLORUNSHO", "seatNumber": 5 },
-    { "name": "Mrs FOLORUNSHO", "seatNumber": 17 },
-    { "name": "Mrs AGNES EGURE", "seatNumber": 20 },
-    { "name": "MAIMUNATU DAMISA", "seatNumber": 6 },
-    { "name": "SUNDAY DAMISA", "seatNumber": 17 },
-    { "name": "KABIRU DAMISA", "seatNumber": 1 },
-    { "name": "GANIU DAMISA", "seatNumber": 10 },
-    { "name": "JANET DAMISA", "seatNumber": 3 },
-    { "name": "DANIEL DAMISA", "seatNumber": 18 },
-    { "name": "ABDUL DAMISA", "seatNumber": 12 },
-    { "name": "ILLIASU MUBARAK", "seatNumber": 2 },
-    { "name": "SAFIYA ANTHONY", "seatNumber": 5 },
-    { "name": "RUFAI OZIGI", "seatNumber": 10 },
-    { "name": "JOHN OZIGI", "seatNumber": 2 },
-    { "name": "NDUBISI CHIJIOKE", "seatNumber": 10 },
-    { "name": "Mr FEMI OLORUNMAYE", "seatNumber": 1 },
-    { "name": "SEUN MAYE", "seatNumber": 16 },
-    { "name": "BISOLA", "seatNumber": 2 },
-    { "name": "Mr. ISRAEL ONOJA", "seatNumber": 20 },
-    { "name": "JACKSON", "seatNumber": 20 },
-    { "name": "Barr. KABIRU", "seatNumber": 11 },
-    { "name": "ILERIOLUWA OLORUNMAYE", "seatNumber": 8 },
-    { "name": "OREOLUWA OLORUNMAYE (CHIEF BRIDESMAID)", "seatNumber": 9 },
-    { "name": "WINNER MATTHEW (BRIDE'S MAID)", "seatNumber": 5 },
-    { "name": "AUDU FAITH (BRIDE'S MAID/ PHOTOGRAPHER)", "seatNumber": 16 },
-    { "name": "SALAMATU YAHAYA (BRIDE'S MAID)", "seatNumber": 16 },
-    { "name": "FRANCISCA OPARA (BRIDE'S MAID/ MAKEUP ARTIST)", "seatNumber": 18 },
-    { "name": "YAKUBU PRECIOUS (BRIDE'S MAID)", "seatNumber": 2 },
-    { "name": "SUZIE NAMAS (BRIDE'S MAID)", "seatNumber": 9 },
-    { "name": "BAKO FATIMA (BRIDE'S MAID)", "seatNumber": 14 },
-    { "name": "RHODA AREH (BRIDE'S MAID)", "seatNumber": 12 },
-    { "name": "REJOICE EDOM (BRIDE'S MAID)", "seatNumber": 20 },
-    { "name": "FUNMI OYENIYI (BRIDE'S MAID)", "seatNumber": 17 },
-    { "name": "CHRISTIANA FOLORUNSHO", "seatNumber": 14 },
-    { "name": "DEENY", "seatNumber": 1 },
-    { "name": "SOFIA", "seatNumber": 14 },
-    { "name": "Mr GOKE", "seatNumber": 5 },
-    { "name": "Mr GBEMIGA", "seatNumber": 13 },
-    { "name": "Mrs ELIZABETH", "seatNumber": 12 },
-    { "name": "Mr GBENGA ILORI", "seatNumber": 4 },
-    { "name": "Mrs GRACE ILLORI", "seatNumber": 6 },
-    { "name": "Mr SHERIFF", "seatNumber": 4 },
-    { "name": "Mrs SHERIFF", "seatNumber": 7 },
-    { "name": "Mrs CHRISTIAN", "seatNumber": 8 },
-    { "name": "Mr BLINKS OCHECHE", "seatNumber": 1 },
-    { "name": "Mr GODWIN OCHECHE", "seatNumber": 19 },
-    { "name": "TAKU AZIMAZI", "seatNumber": 2 },
-    { "name": "VICTOR EDOHSON", "seatNumber": 19 },
-    { "name": "JUNIOR", "seatNumber": 19 },
-    { "name": "ISAAC", "seatNumber": 15 },
-    { "name": "Mr ISHAKU UMAR", "seatNumber": 7 },
-    { "name": "AWWAL SALISU", "seatNumber": 1 },
-    { "name": "Sis CHIDIMMA", "seatNumber": 5 },
-    { "name": "Bro OSCAR", "seatNumber": 9 },
-    { "name": "Sis PERPETUAL", "seatNumber": 11 },
-    { "name": "Dr TOBA OLORUNFEMI", "seatNumber": 1 },
-    { "name": "JONATHAN OJEKA", "seatNumber": 4 },
-    { "name": "FAITH EGURE", "seatNumber": 5 },
-    { "name": "BLESSING EGURE", "seatNumber": 16 },
-    { "name": "RUTH BELLO", "seatNumber": 9 },
-    { "name": "YETUNDE BADAMOSI", "seatNumber": 14 },
-    { "name": "Mrs DEBORAH AYINLA", "seatNumber": 13 },
-    { "name": "DAMILOLA INAWOLE", "seatNumber": 18 },
-    { "name": "TOSIN MICHEAL", "seatNumber": 9 },
-    { "name": "'Twas brillig", "seatNumber": 119 }
-  ]
-
+var database = [
+  {
+    "name": "OREOLUWA OLORUNMAYE (CHIEF BRIDESMAID)",
+    "seatNumber": "0"
+  },
+  {
+    "name": "OREOLUWA OLORUNMAYE (CHIEF BRIDESMAID)",
+    "seatNumber": "2"
+  },
+  {
+    "name": "OREOLUWA OLORUNMAYE (CHIEF BRIDESMAID)",
+    "seatNumber": "2"
+  },
+  {
+    "name": "OREOLUWA OLORUNMAYE (CHIEF BRIDESMAID)",
+    "seatNumber": "2"
+  },
+  {
+    "name": "OREOLUWA OLORUNMAYE (CHIEF BRIDESMAID)",
+    "seatNumber": "2"
+  },
+  {
+    "name": "OREOLUWA OLORUNMAYE (CHIEF BRIDESMAID)",
+    "seatNumber": "2"
+  },
+  {
+    "name": "MRS FOLORUNSHO",
+    "seatNumber": "2"
+  },
+  {
+    "name": "MRS AGNES EGURE",
+    "seatNumber": "2"
+  },
+  {
+    "name": "ILLIASU MUBARAK",
+    "seatNumber": "2"
+  },
+  {
+    "name": "DR. (MRS.) ELIZABETH ELHASSAN",
+    "seatNumber": "3"
+  },
+  {
+    "name": "MRS ANITA GWOM",
+    "seatNumber": "3"
+  },
+  {
+    "name": "BARR. KABIRU",
+    "seatNumber": "3"
+  },
+  {
+    "name": "MR ROGERS NWOKE",
+    "seatNumber": "3"
+  },
+  {
+    "name": "HONOURABLE PETER",
+    "seatNumber": "3"
+  },
+  {
+    "name": "HONOURABLE ISHAQ",
+    "seatNumber": "3"
+  },
+  {
+    "name": "MR GOKE",
+    "seatNumber": "3"
+  },
+  {
+    "name": "MR GBEMIGA",
+    "seatNumber": "3"
+  },
+  {
+    "name": "MRS ELIZABETH",
+    "seatNumber": "3"
+  },
+  {
+    "name": "MR GBENGA ILORI",
+    "seatNumber": "4"
+  },
+  {
+    "name": "MRS GRACE ILLORI",
+    "seatNumber": "4"
+  },
+  {
+    "name": "MR ISHAKU UMAR",
+    "seatNumber": "4"
+  },
+  {
+    "name": "MRS CHRISTIAN",
+    "seatNumber": "3"
+  },
+  {
+    "name": "AWWAL SALISU",
+    "seatNumber": "4"
+  },
+  {
+    "name": "SANI AMIRU",
+    "seatNumber": "4"
+  },
+  {
+    "name": "MRS DEBORAH AYINLA",
+    "seatNumber": "4"
+  },
+  {
+    "name": "PRECIOUS UNILAG",
+    "seatNumber": "4"
+  },
+  {
+    "name": "MR SHERIFF",
+    "seatNumber": "4"
+  },
+  {
+    "name": "MRS SHERIFF",
+    "seatNumber": "4"
+  },
+  {
+    "name": "AUSTIN GEMSTONE",
+    "seatNumber": "4"
+  },
+  {
+    "name": "MR. DANJUMA",
+    "seatNumber": "4"
+  },
+  {
+    "name": "MR. SUNDAY",
+    "seatNumber": "4"
+  },
+  {
+    "name": "MAIMUNATU GUEST 1",
+    "seatNumber": "2"
+  },
+  {
+    "name": "MAIMUNATU GUEST 2",
+    "seatNumber": "2"
+  },
+  {
+    "name": "AUDU FAITH (BRIDE'S MAID/PHOTOGRAPHER)",
+    "seatNumber": "5"
+  },
+  {
+    "name": "SALAMATU YAHAYA (BRIDE'S MAID)",
+    "seatNumber": "5"
+  },
+  {
+    "name": "FRANCISCA OPARA (BRIDE'S MAID/MAKEUP ARTIST)",
+    "seatNumber": "5"
+  },
+  {
+    "name": "YAKUBU PRECIOUS (BRIDE'S MAID)",
+    "seatNumber": "5"
+  },
+  {
+    "name": "SUZIE NAMAS (BRIDE'S MAID)",
+    "seatNumber": "5"
+  },
+  {
+    "name": "BAKO FATIMA (BRIDE'S MAID)",
+    "seatNumber": "5"
+  },
+  {
+    "name": "RHODA AREH (BRIDE'S MAID)",
+    "seatNumber": "5"
+  },
+  {
+    "name": "REJOICE EDOM (BRIDE'S MAID)",
+    "seatNumber": "5"
+  },
+  {
+    "name": "FUNMI OYENIYI (BRIDE'S MAID)",
+    "seatNumber": "5"
+  },
+  {
+    "name": "MAIMUNATU DAMISA",
+    "seatNumber": "9"
+  },
+  {
+    "name": "SUNDAY DAMISA",
+    "seatNumber": "9"
+  },
+  {
+    "name": "KABIRU DAMISA",
+    "seatNumber": "9"
+  },
+  {
+    "name": "GANIU DAMISA",
+    "seatNumber": "9"
+  },
+  {
+    "name": "JANET DAMISA",
+    "seatNumber": "5"
+  },
+  {
+    "name": "DANIEL DAMISA",
+    "seatNumber": "9"
+  },
+  {
+    "name": "ABDUL DAMISA",
+    "seatNumber": "9"
+  },
+  {
+    "name": "SAFIYA ANTHONY",
+    "seatNumber": "9"
+  },
+  {
+    "name": "RUFAI OZIGI",
+    "seatNumber": "9"
+  },
+  {
+    "name": "JOHN OZIGI",
+    "seatNumber": "9"
+  },
+  {
+    "name": "BLESSING OHA",
+    "seatNumber": "9"
+  },
+  {
+    "name": "MR. ANTHONY",
+    "seatNumber": "9"
+  },
+  {
+    "name": "NDUBISI CHIJIOKE",
+    "seatNumber": "10"
+  },
+  {
+    "name": "DAMILOLA INAWOLE",
+    "seatNumber": "10"
+  },
+  {
+    "name": "TOSIN MICHEAL",
+    "seatNumber": "10"
+  },
+  {
+    "name": "BRIDGET",
+    "seatNumber": "10"
+  },
+  {
+    "name": "SEUN MAYE",
+    "seatNumber": "10"
+  },
+  {
+    "name": "BISOLA",
+    "seatNumber": "10"
+  },
+  {
+    "name": "MR. ISRAEL ONOJA",
+    "seatNumber": "10"
+  },
+  {
+    "name": "ILERIOLUWA OLORUNMAYE",
+    "seatNumber": "10"
+  },
+  {
+    "name": "CHARLES EZENGWA",
+    "seatNumber": "10"
+  },
+  {
+    "name": "TAKU AZIMAZI",
+    "seatNumber": "10"
+  },
+  {
+    "name": "ISREAL ADEOLA",
+    "seatNumber": "8"
+  },
+  {
+    "name": "MR BLINKS OCHECHE",
+    "seatNumber": "11"
+  },
+  {
+    "name": "MR GODWIN OCHECHE",
+    "seatNumber": "11"
+  },
+  {
+    "name": "JONATHAN OJEKA",
+    "seatNumber": "11"
+  },
+  {
+    "name": "FAITH EGURE",
+    "seatNumber": "11"
+  },
+  {
+    "name": "BLESSING EGURE",
+    "seatNumber": "11"
+  },
+  {
+    "name": "RUTH BELLO",
+    "seatNumber": "11"
+  },
+  {
+    "name": "FRIEND TO THE BRIDE 1",
+    "seatNumber": "11"
+  },
+  {
+    "name": "FRIEND TO THE BRIDE 2",
+    "seatNumber": "11"
+  },
+  {
+    "name": "FRIEND TO THE BRIDE 3",
+    "seatNumber": "11"
+  },
+  {
+    "name": "FRIEND TO THE BRIDE 4",
+    "seatNumber": "11"
+  },
+  {
+    "name": "IKO RICHARD",
+    "seatNumber": "11"
+  },
+  {
+    "name": "JUNIOR",
+    "seatNumber": "13"
+  },
+  {
+    "name": "ISAAC",
+    "seatNumber": "13"
+  },
+  {
+    "name": "BRO OSCAR",
+    "seatNumber": "13"
+  },
+  {
+    "name": "SIS PERPETUAL",
+    "seatNumber": "13"
+  },
+  {
+    "name": "CHRISTIANA FOLORUNSHO",
+    "seatNumber": "13"
+  },
+  {
+    "name": "MR. DEENY",
+    "seatNumber": "13"
+  },
+  {
+    "name": "MRS DORCAS ISABELLA",
+    "seatNumber": "13"
+  },
+  {
+    "name": "SOFIA",
+    "seatNumber": "13"
+  },
+  {
+    "name": "FRIEND TO THE BRIDE 5",
+    "seatNumber": "15"
+  },
+  {
+    "name": "FRIEND TO THE BRIDE 6",
+    "seatNumber": "15"
+  },
+  {
+    "name": "MICHEAL LAMAI",
+    "seatNumber": "13"
+  },
+  {
+    "name": "MR & MRS. MOSES AKINTOYE",
+    "seatNumber": "1"
+  },
+  {
+    "name": "MR & MRS. ADEOLA JOHN",
+    "seatNumber": "1"
+  },
+  {
+    "name": "MR. KHEINDE OLORUNSHOLA",
+    "seatNumber": "1"
+  },
+  {
+    "name": "DANIEL AKINTOYE",
+    "seatNumber": "7"
+  },
+  {
+    "name": "SAMUEL AKINTOYE",
+    "seatNumber": "6"
+  },
+  {
+    "name": "GRACE AKINTOYE",
+    "seatNumber": "8"
+  },
+  {
+    "name": "EMMANUEL AGBO",
+    "seatNumber": "8"
+  },
+  {
+    "name": "GABRIEL ADELEKE",
+    "seatNumber": "6"
+  },
+  {
+    "name": "BABA T",
+    "seatNumber": "7"
+  },
+  {
+    "name": "HIGH CHIEF & MRS. NOSAKHARE OGHUMU",
+    "seatNumber": "7"
+  },
+  {
+    "name": "JOEL ANGO",
+    "seatNumber": "0"
+  },
+  {
+    "name": "STANLEY",
+    "seatNumber": "6"
+  },
+  {
+    "name": "YARIOK ELIAS",
+    "seatNumber": "6"
+  },
+  {
+    "name": "ABMAX",
+    "seatNumber": "14"
+  },
+  {
+    "name": "HERISON",
+    "seatNumber": "14"
+  },
+  {
+    "name": "ISHAKU SOLOMON",
+    "seatNumber": "7"
+  },
+  {
+    "name": "LEVI AKOMA",
+    "seatNumber": "7"
+  },
+  {
+    "name": "LEGACY",
+    "seatNumber": "12"
+  },
+  {
+    "name": "NIFTY",
+    "seatNumber": "7"
+  },
+  {
+    "name": "SYAKASAI",
+    "seatNumber": "14"
+  },
+  {
+    "name": "UTHMAN YD",
+    "seatNumber": "14"
+  },
+  {
+    "name": "NOAH",
+    "seatNumber": "6"
+  },
+  {
+    "name": "AUSTIN KIRAH",
+    "seatNumber": "6"
+  },
+  {
+    "name": "JERRY STEPHEN",
+    "seatNumber": "6"
+  },
+  {
+    "name": "BIGGY KHALI",
+    "seatNumber": "6"
+  },
+  {
+    "name": "ESOSA",
+    "seatNumber": "12"
+  },
+  {
+    "name": "SMOOTH",
+    "seatNumber": "12"
+  },
+  {
+    "name": "UNIMKE",
+    "seatNumber": "12"
+  },
+  {
+    "name": "ANGELA",
+    "seatNumber": "12"
+  },
+  {
+    "name": "ZION ADEBISI",
+    "seatNumber": "12"
+  },
+  {
+    "name": "SPELLSMEDIA",
+    "seatNumber": "12"
+  },
+  {
+    "name": "MCKAYLA OCHICKE",
+    "seatNumber": "12"
+  },
+  {
+    "name": "FAYYAZ",
+    "seatNumber": "6"
+  },
+  {
+    "name": "OLVERKAHN",
+    "seatNumber": "6"
+  },
+  {
+    "name": "SAMMUEL OMOH",
+    "seatNumber": "7"
+  },
+  {
+    "name": "ADAMS OGUCHE",
+    "seatNumber": "8"
+  },
+  {
+    "name": "SLIM",
+    "seatNumber": "14"
+  },
+  {
+    "name": "HOLY",
+    "seatNumber": "14"
+  },
+  {
+    "name": "SLY",
+    "seatNumber": "14"
+  },
+  {
+    "name": "JEMILA YHAHYA",
+    "seatNumber": "14"
+  },
+  {
+    "name": "DAMRIS ELISHA",
+    "seatNumber": "14"
+  },
+  {
+    "name": "MR. & MRS. MARK DOMNIC",
+    "seatNumber": "8"
+  },
+  {
+    "name": "CHIEF EZEGE",
+    "seatNumber": "7"
+  },
+  {
+    "name": "VIVIAN JOHN",
+    "seatNumber": "12"
+  },
+  {
+    "name": "HANNAH SUNDAY",
+    "seatNumber": "8"
+  },
+  {
+    "name": "VICTOR",
+    "seatNumber": "8"
+  },
+  {
+    "name": "ADAMU AHIJAH AMULO",
+    "seatNumber": "8"
+  },
+  {
+    "name": "DJ MUBBY",
+    "seatNumber": "0"
+  },
+  {
+    "name": "MC PRINZ TALKER",
+    "seatNumber": "0"
+  },
+  {
+    "name": "GROOM GUEST 1",
+    "seatNumber": "14"
+  },
+  {
+    "name": "GROOM GUEST 2",
+    "seatNumber": "15"
+  },
+  {
+    "name": "GROOM GUEST 3",
+    "seatNumber": "15"
+  },
+  {
+    "name": "GROOM GUEST 4",
+    "seatNumber": "15"
+  },
+  {
+    "name": "GROOM GUEST 5",
+    "seatNumber": "15"
+  },
+  {
+    "name": "GROOM PARENT GUEST 1",
+    "seatNumber": "15"
+  },
+  {
+    "name": "GROOM PARENT GUEST 2",
+    "seatNumber": "15"
+  },
+  {
+    "name": "GROOM PARENT GUEST 3",
+    "seatNumber": "15"
+  },
+  {
+    "name": "GROOM PARENT GUEST 4",
+    "seatNumber": "8"
+  },
+  {
+    "name": "GROOM PARENT GUEST 5",
+    "seatNumber": "8"
+  },
+  {
+    "name": "MR. & MRS. COKER",
+    "seatNumber": "1"
+  },
+  {
+    "name": "ALH. TOYIN JIMOH",
+    "seatNumber": "1"
+  },
+  {
+    "name": "MR. & MRS. TOLA ELIJAH",
+    "seatNumber": "1"
+  },
+ 
+]
 function findSeatNumberByName(nameToSearch) {
   const matchingEntry = database.find(entry => Object.values(entry).includes(nameToSearch));
   return matchingEntry ? matchingEntry.seatNumber : undefined;
