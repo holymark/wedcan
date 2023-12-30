@@ -704,7 +704,7 @@ function removeScanned(button) {
 getScanned("/api/data")
   .then(d => {
     var html = ``
-    html += `<ol class="list-decimal">`;
+    html += `<ol class="list-decimal relative">`;
     d.forEach(d => {
       if (d && d.scanned == true) {
         html += `<li class="mb-4 border-l-4 border-blue-500 pl-4 py-2 pr-[134px] bg-blue-100 rounded-md relative">${d.name} (${d.seatNumber}), ${formatMongoDBTimestamp(d.updatedAt)}
