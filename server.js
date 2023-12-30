@@ -15,7 +15,7 @@ const mongooseOptions = {
 };
 
 const dataSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true , unique:true },
   seatNumber: { type: String, required: true },
   scanned: { type: Boolean, default: false }
 }, { timestamps: true });

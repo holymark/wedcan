@@ -614,6 +614,7 @@ function onScanSuccess(decodedText) {
     if (result.isConfirmed) {
 
       try {
+        
         saveScanned(decodedText, seatNumber)
         Swal.fire("Saved!", "", "success");
       } catch (e) {
